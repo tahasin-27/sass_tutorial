@@ -1,0 +1,13 @@
+@mixin flexprob {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+@mixin commoncode($para1, $para2) {
+    color: red;
+    font-size: 3rem + 2rem;
+    letter-spacing: $para1;
+    text-transform: $para2;
+}
