@@ -5,14 +5,17 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto auto;
-    gap: 40px;
+    // gap: 40px;
+    gap: u.rem(40);
     // max-width: 1000px;
-    width: min(100% - 40px, 1000px);
+    //width: min(100% - 40px, 1000px
+    width: min(100% - u.rem(40), u.rem(1000));
     margin-inline: auto;
 
     &__main,
     &__asidebar {
-        padding: 40px;
+        // padding: 40px;
+        padding: u.rem(40);
     }
 
     @include u.breakpoint(large) {   //@media (min-width: 900px)
@@ -26,9 +29,23 @@
 
     &__asidebar {
         background-color: hsl(300, 90%, 28%);
+        
 
-        @media (max-width: 56.25em) {
-        text-align: center;
+        // @media (max-width: 56.25em) {
+        // text-align: center;
+        // }
+
+        
+        // @include breakpoint(medium) {
+        //     text-align: left;
+        // }
+        
+        @include u.breakpoint-down(medium) {
+            text-align: center;
+        }
+
+        @include u.breakpoint-down(small) {
+            text-align: right;
         }
     }
 }

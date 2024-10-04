@@ -1,0 +1,27 @@
+@use "functions" as f;
+
+// 700px, 900px, 1440
+$breakpoints-up: (
+    'medium': f.em(700),  //43.75em, --> 16px=1em; 700px/15=43.75em
+    'large': f.em(900),//56.25em --> 900px/16px=56.25em
+    'xlarge': f.em(1440),//90em --> 1440px/15px=90em
+);
+
+//699.98px, 899.98px, 1439.98px --> to avoid overlapping
+$breakpoints-down: (
+    'small': f.em(699.98),//43.7485em --> 699.98px/16px
+    'medium': f.em(899.89),//56.24875em --> 899.98px/16px
+    'large': f.em(1439.98),//89.99875em --> 1439.98px/16px
+);
+
+@mixin breakpoint($size) {
+    @media (min-width: map-get($breakpoints-up, $size)) {
+        @content;
+    }
+}
+
+@mixin breakpoint-down($size) {
+    @media (max-width: map-get($breakpoints-down, $size)) {
+        @content;
+    }
+}
